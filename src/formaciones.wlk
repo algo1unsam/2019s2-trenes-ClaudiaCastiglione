@@ -9,6 +9,7 @@ class Formacion {
 	var property vagones = []
 
 	method totalPasajerosPuedeTransportar() {
+		return vagones.sum({vagon => vagon.cantPasajeros()})
 	}
 
 	method cantVagonesLivianos() {

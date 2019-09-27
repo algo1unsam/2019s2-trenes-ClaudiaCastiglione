@@ -1,0 +1,8 @@
+describe testDeFormaciones {
+test "la cantidad de pasajeros que puede transportar una formacion con una locomotora y un vagon de pasajeros de 3m de ancho y 10 m de largo es 80" {
+
+	assert.equals(formacion1.totalPasajerosPuedeTransportar(),80)
+
+}
+
+}
