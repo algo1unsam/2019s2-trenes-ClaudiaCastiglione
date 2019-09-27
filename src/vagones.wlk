@@ -5,4 +5,8 @@ class Vagon {
 		return clase.esLiviano()
 	}
 	
+	method pesoTotal() {
+		return clase.pesoTotal()
+	}
+	
 }

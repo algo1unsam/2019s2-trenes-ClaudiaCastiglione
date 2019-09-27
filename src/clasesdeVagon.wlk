@@ -1,5 +1,6 @@
 class carga {
 	var property cargaMaxima
+	var property peso
 	
 	method pesoMaximo() {
 		return cargaMaxima + 160
@@ -9,12 +10,17 @@ class carga {
 		return (self.pesoMaximo( ) < 2500)
 	}
 	
+	method pesoTotal() {
+		return peso + self.pesoMaximo()
+	}
+	
 	
 }
 
 class pasajeros {
 	var property largo
 	var property anchoUtil
+	var property peso
 	
 	method cantPasajeros() {
 		if (anchoUtil < = 2.5 ) return largo * 8
@@ -22,10 +28,13 @@ class pasajeros {
 	}
 	
 	method pesoMaximo() {
-		return self.cantpasajeros() * 80
+		return self.cantPasajeros() * 80
 		}
 		
 	method esLiviano(){
 		return (self.pesoMaximo( ) < 2500)
+	}
+	method pesoTotal() {
+		return peso + self.pesoMaximo()
 	}
 }

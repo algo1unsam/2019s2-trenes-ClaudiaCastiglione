@@ -7,4 +7,8 @@ class Locomotora {
 		return pesoMaximoPuedeArrastrar - peso
 	}
 	
+	method esEficienteLocomotora() {
+		return (self.arrastreUtil() >= peso * 5)
+	}
+	
 }
