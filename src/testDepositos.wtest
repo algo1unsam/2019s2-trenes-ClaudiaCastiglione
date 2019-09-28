@@ -45,4 +45,8 @@ test "el depositoCentro necesita un conductor experimentado, pues la formacion3 
 	assert.that(depositoCentro.necesitaConductorExperimentado())
 }
 
+test "al querer agregar una locomotora a la formacion2 el deposito informa que no es necesario" {
+	assert.throwsExceptionWithMessage("Esa formacion no necesita locomotora extra", {depositoCentro.agregarLocomotoraA(formacion2)})
+}
+
 }

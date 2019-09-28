@@ -11,6 +11,7 @@ class Deposito {
 		return formaciones.map({formacion => formacion.vagonMasPesado()})
 	}
 	
+	/*En el metodo para determinar si necesita un conductor experimentado, el deposito delega en sus formaciones determinar si son complejas*/
 	method necesitaConductorExperimentado() {
 		return formaciones. any({formacion => formacion.esCompleja()})
 	}
