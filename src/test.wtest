@@ -4,9 +4,15 @@ import vagones.*
 import formaciones.*
 import clasesdeVagon.*
 
-describe "testDeFormaciones" {
-	var clasePasajero = new Pasajero(largo = 10 , anchoUtil = 3 , peso = 300)
-	var vagonPasajeros1 = new Vagon(clase = clasePasajero)
+describe "test para las formaciones" {
+	var clasePasajero1 = new Pasajero(largo = 10 , anchoUtil = 3 , peso = 300)
+	var clasePasajero2 = new Pasajero(largo = 10, anchoUtil = 2, peso = 500)
+	var claseCargaCarbon = new Carga(cargaMaxima = 5500, peso = 1500)
+	var claseCargaMadera = new Carga(cargaMaxima = 7500, peso = 1500)
+	var vagonPasajeros1 = new Vagon(clase = clasePasajero1)
+	var vagonPasajeros2 = new Vagon(clase = clasePasajero2)
+	var vagonCargaCarbon = new Vagon(clase = claseCargaCarbon)
+	var vagonCargaMadera = new Vagon(clase = claseCargaMadera)
 	var locomotora1 = new Locomotora(peso = 500, pesoMaximoPuedeArrastrar = 8000, velocidadMaxima = 100)
 	var locomotora2 = new Locomotora(peso = 800, pesoMaximoPuedeArrastrar = 10000, velocidadMaxima = 150)
 	var formacion1 = new Formacion(locomotoras = [locomotora1, locomotora2], vagones = [vagonPasajeros1])
@@ -19,6 +25,11 @@ test "la cantidad de pasajeros que puede transportar una formacion con una locom
 
 }
 
+test "la cantidad de pasajeros que puede transportar una formacion con una locomotora, un vagon de pasajeros1 (100 pasajeros) y un vagon de pasajeros2 (80 pasajeros) es 180" {
+	formacion1.vagones().add(vagonPasajeros2)
+	assert.equals(formacion1.totalPasajerosPuedeTransportar(),180)
+}
+
 test "la velocidad minima de una formacion con una locomotora cuya vel es 100 y otra cuya vel min es 150, vale 100 (el min entre ambas)" {
 	assert.equals(formacion1.velocidadMaxima(), 100)
 }
@@ -26,4 +37,26 @@ test "la velocidad minima de una formacion con una locomotora cuya vel es 100 y 
 test "la formacion1 es eficiente, pues la locomotora1 arrastra 5 veces su peso y la locomotora2 tambien" {
 	assert.that(formacion1.esEficiente())
 }
+
+test "la formacion1 puede moverse pues el arrastre util de las locomotoras 1 y 2 sumado es mayor que el peso maximo total del vagon1" {
+	assert.that(formacion1.puedeMoverse())
+}
+
+test "cuando agrego dos vagones de carga a la formacion1 ya no puede moverse, pues la suma de los pesos maximos de sus vagones excede a la suma de arrastres utiles de sus locomotoras" {
+	formacion1.vagones().add(vagonCargaMadera)
+	formacion1.vagones().add(vagonCargaCarbon)
+	assert.that(not formacion1.puedeMoverse())
+}
+
+test "a la formacion1 le faltan 4620 kilos de empuje cuando las locomotoras 1 y 2 (arrastre util total 7500 + 9200 = 16700) deben arrastrar al vagon1, vagonCargaMadera y vagonCargaCarbon (de pesos maximos totales sumados)" {
+	formacion1.vagones().add(vagonCargaMadera)
+	formacion1.vagones().add(vagonCargaCarbon)
+	assert.equals(formacion1.kilosEmpujeFaltantes(), 4620)
+}
+
+test "el vagon mas pesado de la formacion1, que lleva al vagonPasajeros1 y al vagonCargaMadera es el vagonCargaMadera" {
+	formacion1.vagones().add(vagonCargaMadera)
+	assert.equals(formacion1.vagonMasPesado(), vagonCargaMadera)
+}
+
 }

@@ -7,7 +7,7 @@ class Deposito {
 	var property formaciones = [] 
 	var property locomotoras = []
 	
-	method vagonesMaspesados() {
+	method vagonesMasPesados() {
 		return formaciones.map({formacion => formacion.vagonMasPesado()})
 	}
 	
