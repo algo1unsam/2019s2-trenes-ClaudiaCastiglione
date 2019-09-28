@@ -16,22 +16,22 @@ class Deposito {
 		return formaciones. any({formacion => formacion.esCompleja()})
 	}
 	
-	method hayLocomotoraQueSirva(unaFormacion) {
+	method hayLocomotoraQueSirvaPara(unaFormacion) {
 		return locomotoras.any({locomotora => (locomotora.arrastreUtil()) >= (unaFormacion.kilosEmpujeFaltantes())})
 	}
 	
-	method sonLocomotorasIndicadas(unaFormacion) {
+	method sonLocomotorasIndicadasPara(unaFormacion) {
 		return locomotoras.filter({locomotora => (locomotora.arrastreUtil()) >= (unaFormacion.kilosEmpujeFaltantes())})
 	}
 	
-	method necesitaYExisteLocomotoraExtra(unaFormacion) {
-		return (not unaFormacion.puedeMoverse()) && self.hayLocomotoraQueSirva(unaFormacion)
+	method necesitaLocomotoraExtraYExiste(unaFormacion) {
+		return (not unaFormacion.puedeMoverse()) && self.hayLocomotoraQueSirvaPara(unaFormacion)
 	}
 	
 	method agregarLocomotoraA(unaFormacion) {
-		 if(self.necesitaYExisteLocomotoraExtra(unaFormacion)) {
-		 	unaFormacion.locomotoras().add(self.sonLocomotorasIndicadas(unaFormacion).first())
-		 	locomotoras.remove(self.sonLocomotorasIndicadas(unaFormacion).first())
+		 if(self.necesitaLocomotoraExtraYExiste(unaFormacion)) {
+		 	unaFormacion.locomotoras().add(self.sonLocomotorasIndicadasPara(unaFormacion).first())
+		 	locomotoras.remove(self.sonLocomotorasIndicadasPara(unaFormacion).first())
 		 }
 		 else self.error("Esa formacion no necesita locomotora extra")
 	}
