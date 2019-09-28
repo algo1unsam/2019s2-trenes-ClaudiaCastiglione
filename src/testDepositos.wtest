@@ -31,7 +31,7 @@ describe "test para los depositos" {
 	var formacion1 = new Formacion(locomotoras = [locomotora1], vagones = [vagonPasajeros1, vagonPasajeros5])
 	var formacion2 = new Formacion(locomotoras = [locomotora3, locomotora2], vagones = [vagonPasajeros2])
 	var formacion3 = new Formacion(locomotoras = [locomotora4], vagones = [vagonPasajeros3, vagonPasajeros6])
-	
+	var formacion4 = new Formacion(vagones = [vagonCargaCarbon])
 	var depositoCentro = new Deposito(formaciones = [formacion1, formacion2, formacion3], locomotoras = [locomotora5])
 
 test "el conjunto de vagones mas pesados de las formaciones del depositoCentro esta formado por el vagonPasajeros1 (formacion1), el vagonPasajeros2 (formacion2) y el vagonPasajeros6 (formacion3)" {
@@ -47,6 +47,11 @@ test "el depositoCentro necesita un conductor experimentado, pues la formacion3 
 
 test "al querer agregar una locomotora a la formacion2 el deposito informa que no es necesario" {
 	assert.throwsExceptionWithMessage("Esa formacion no necesita locomotora extra", {depositoCentro.agregarLocomotoraA(formacion2)})
+}
+
+test "al querer agregar una locomotora a la formacion4 el depositoCentro selecciona a la locomotora5 que esta libre y la agrega para que la formacion pueda moverse" {
+	depositoCentro.agregarLocomotoraA(formacion4)
+	assert.equals(formacion4.locomotoras(), [locomotora5])
 }
 
 }
