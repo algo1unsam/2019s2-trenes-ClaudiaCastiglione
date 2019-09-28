@@ -23,4 +23,7 @@ test "la velocidad minima de una formacion con una locomotora cuya vel es 100 y 
 	assert.equals(formacion1.velocidadMaxima(), 100)
 }
 
+test "la formacion1 es eficiente, pues la locomotora1 arrastra 5 veces su peso y la locomotora2 tambien" {
+	assert.that(formacion1.esEficiente())
+}
 }
