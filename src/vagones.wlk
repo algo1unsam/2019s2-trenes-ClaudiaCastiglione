@@ -18,6 +18,7 @@ class Vagon {
 	method cantPasajeros() {
 		return clase.cantPasajeros()
 	}
+	
 	method pesoMaximo() {
 		return clase.pesoMaximo()
 	}

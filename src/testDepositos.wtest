@@ -27,12 +27,13 @@ describe "test para los depositos" {
 	var locomotora3 = new Locomotora(peso = 800, pesoMaximoPuedeArrastrar = 9000, velocidadMaxima = 120)
 	var locomotora4 = new Locomotora(peso = 500, pesoMaximoPuedeArrastrar = 10000, velocidadMaxima = 150)
 	var locomotora5 = new Locomotora(peso = 500, pesoMaximoPuedeArrastrar = 10000, velocidadMaxima = 120)
+	
 	var formacion1 = new Formacion(locomotoras = [locomotora1], vagones = [vagonPasajeros1, vagonPasajeros5])
 	var formacion2 = new Formacion(locomotoras = [locomotora3, locomotora2], vagones = [vagonPasajeros2])
 	var formacion3 = new Formacion(locomotoras = [locomotora4], vagones = [vagonPasajeros3, vagonPasajeros6])
 	
-	
 	var depositoCentro = new Deposito(formaciones = [formacion1, formacion2, formacion3], locomotoras = [locomotora5])
+
 test "el conjunto de vagones mas pesados de las formaciones del depositoCentro esta formado por el vagonPasajeros1 (formacion1), el vagonPasajeros2 (formacion2) y el vagonPasajeros6 (formacion3)" {
 
 	assert.equals(depositoCentro.vagonesMasPesados(), [vagonPasajeros1, vagonPasajeros2, vagonPasajeros6])
