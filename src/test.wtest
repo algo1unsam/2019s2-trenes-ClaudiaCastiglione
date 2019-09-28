@@ -1,8 +1,26 @@
-describe testDeFormaciones {
-test "la cantidad de pasajeros que puede transportar una formacion con una locomotora y un vagon de pasajeros de 3m de ancho y 10 m de largo es 80" {
+import depositos.*
+import locomotoras.*
+import vagones.*
+import formaciones.*
+import clasesdeVagon.*
 
-	assert.equals(formacion1.totalPasajerosPuedeTransportar(),80)
+describe "testDeFormaciones" {
+	var clasePasajero = new Pasajero(largo = 10 , anchoUtil = 3 , peso = 300)
+	var vagonPasajeros1 = new Vagon(clase = clasePasajero)
+	var locomotora1 = new Locomotora(peso = 500, pesoMaximoPuedeArrastrar = 8000, velocidadMaxima = 100)
+	var locomotora2 = new Locomotora(peso = 800, pesoMaximoPuedeArrastrar = 10000, velocidadMaxima = 150)
+	var formacion1 = new Formacion(locomotoras = [locomotora1, locomotora2], vagones = [vagonPasajeros1])
+	
+	
+	
+test "la cantidad de pasajeros que puede transportar una formacion con una locomotora y un vagon de pasajeros de 3m de ancho y 10 m de largo es 100" {
 
+	assert.equals(formacion1.totalPasajerosPuedeTransportar(),100)
+
+}
+
+test "la velocidad minima de una formacion con una locomotora cuya vel es 100 y otra cuya vel min es 150, vale 100 (el min entre ambas)" {
+	assert.equals(formacion1.velocidadMaxima(), 100)
 }
 
 }

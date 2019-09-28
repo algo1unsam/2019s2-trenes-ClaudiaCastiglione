@@ -14,6 +14,10 @@ class Vagon {
 	method pesoTotal() {
 		return clase.pesoTotal()
 	}
+	
+	method cantPasajeros() {
+		return clase.cantPasajeros()
+	}
 
 }
 

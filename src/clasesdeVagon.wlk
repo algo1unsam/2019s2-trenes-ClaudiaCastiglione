@@ -29,7 +29,8 @@ class Pasajero {
 	var property peso
 
 	method cantPasajeros() {
-		if (anchoUtil < = 2.5) return largo * 8 else return largo * 10
+		if (anchoUtil <= 2.5) return largo * 8 
+		else return largo * 10
 	}
 
 	method pesoMaximo() {

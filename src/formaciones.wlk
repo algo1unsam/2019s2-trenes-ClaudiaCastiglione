@@ -20,7 +20,7 @@ class Formacion {
 		return locomotoras.min({ locomotora => locomotora.velocidadMaxima() })
 	}
 
-	method velocidadMaximalocomotoraMasLenta() {
+	method velocidadMaxima() {
 		return self.locomotoraMasLenta().velocidadMaxima()
 	}
 
