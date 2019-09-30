@@ -8,7 +8,7 @@ class Deposito {
 	var property locomotoras = []
 	
 	method vagonesMasPesados() {
-		return formaciones.map({formacion => formacion.vagonMasPesado()})
+		return formaciones.map({formacion => formacion.vagonMasPesado()}) // TODO acá hay que devolver un conjunto #{}
 	}
 	
 	/*En el metodo para determinar si necesita un conductor experimentado, el deposito delega en sus formaciones determinar si son complejas*/

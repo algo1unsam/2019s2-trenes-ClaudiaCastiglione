@@ -16,7 +16,7 @@ class Vagon {
 	}
 	
 	method cantPasajeros() {
-		return clase.cantPasajeros()
+		return clase.cantPasajeros()  // TODO clase puede ser Pasajero o Carga, y cantPasajeros() no es un mensaje polimórfico!
 	}
 	
 	method pesoMaximo() {
