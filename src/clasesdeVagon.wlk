@@ -19,6 +19,10 @@ class Carga {
 	method pesoTotal() {
 		return peso + self.pesoMaximo()
 	}
+	
+	method cantPasajeros() {
+		return 0
+	}
 
 }
 

@@ -36,7 +36,7 @@ describe "test para los depositos" {
 
 test "el conjunto de vagones mas pesados de las formaciones del depositoCentro esta formado por el vagonPasajeros1 (formacion1), el vagonPasajeros2 (formacion2) y el vagonPasajeros6 (formacion3)" {
 
-	assert.equals(depositoCentro.vagonesMasPesados(), [vagonPasajeros1, vagonPasajeros2, vagonPasajeros6]) // TODO se pedía un conjunto
+	assert.equals(depositoCentro.vagonesMasPesados(), #{vagonPasajeros1, vagonPasajeros2, vagonPasajeros6}) // TODO se pedía un conjunto
 
 }
 
